@@ -74,4 +74,6 @@ RUN chsh -s /usr/bin/zsh
 WORKDIR /root
 COPY zshrc /root/.zshrc
 COPY entrypoint.sh /bin/entrypoint.sh
+COPY bootstrap.sh /bin/bootstrap.sh
+RUN /bin/bootstrap.sh
 CMD [ "/bin/entrypoint.sh" ]
