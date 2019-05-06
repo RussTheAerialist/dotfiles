@@ -18,9 +18,73 @@ resource "digitalocean_record" "dev" {
   domain = "${data.digitalocean_domain.verda.name}"
   type = "A"
   name = "dev-${random_id.devmachine.b64_url}"
-  value = "127.0.0.1"
+  value = "${digitalocean_droplet.dev.ipv4_address}"
+}
+
+resource "digitalocean_droplet" "dev" {
+  image = "x"
+  name = "dev-${random_id.devmachine.b64_url}"
+  region = "sfo2"
+  size = "s-1vcpu-1gb"
+  provisioner "remote-exec" {
+    script = "bootstrap.sh"
+
+    connection {
+      type = "ssh"
+      private_key = "${file("~/.ssh/id_rsa")}"
+      user = "root"
+      timeout = "2m"
+    }
+  }
+
+  provisioner "file" {
+    source = "pull-secrets.sh"
+    destination = "/mnt/secrets/pull-secrets.sh"
+
+    connection {
+      type = "ssh"
+      private_key = "${file("~/.ssh/id_rsa")}"
+      user = "root"
+      timeout = "2m"
+    }
+  }
+
+  provisioner "remote-exec" {
+    inline = [ "chmod +x /mnt/secrets/pull-secrets.sh" ]
+
+    connection {
+      type = "ssh"
+      private_key = "${file("~/.ssh/id_rsa")}"
+      user = "root"
+      timeout = "2m"
+    }
+  }
+}
+
+resource "digitalocean_firewall" "dev" {
+  name = "dev"
+  droplet_ids = [ "${digitalocean_droplet.dev.id}" ]
+  outbound_rule = [
+    { protocol = "tcp", port_range = "1-65535",
+      destination_addresses = [ "0.0.0.0/0", "::/0"] },
+    { protocol = "udp", port_range = "1-65535",
+      destination_addresses = [ "0.0.0.0/0", "::/0"] },
+    { protocol = "icmp", 
+      destination_addresses = [ "0.0.0.0/0", "::/0"] },
+  ]
 }
 
 output "fqdn" {
   value = "${digitalocean_record.dev.fqdn}"
 }
+
+# This is my default project currently, so everything will just get created here
+# resource "digitalocean_project" "verda" {
+#   name = "verda"
+#   purpose = "Application and Development Support"
+#   environment = "Development"
+#   resources = [
+#     "${digitalocean_droplet.dev.urn}"
+#   ]
+# }
+

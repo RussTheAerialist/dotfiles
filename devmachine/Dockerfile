@@ -24,6 +24,7 @@ RUN apt-get update -qq -y && apt-get upgrade -y && apt-get install -qq -y \
       git \
       git-crypt \
       htop \
+      cpubars \
       less \
       libffi-dev \
       libssl-dev \
