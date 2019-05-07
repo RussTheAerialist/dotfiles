@@ -22,7 +22,7 @@ resource "digitalocean_record" "dev" {
 }
 
 resource "digitalocean_droplet" "dev" {
-  image = "x"
+  image = "docker-18-04"
   name = "dev-${random_id.devmachine.b64_url}"
   region = "sfo2"
   size = "s-1vcpu-1gb"
