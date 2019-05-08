@@ -4,7 +4,17 @@ set -eu
 
 export DEBIAN_FRONTEND=noninteractive
 apt-get update && apt-get upgrade -y
-apt-get install git ca-certificates
+echo "========================================"
+apt-mark showhold
+echo "========================================"
+apt-get install -y git apt-transport-https curl software-properties-common
+curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -
+add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/debian \
+   $(lsb_release -cs) \
+   stable"
+apt-get update
+apt-get install -y docker-ce docker-ce-cli containerd.io
 
 # TODO: Make secrets encrypted
 mkdir -p /mnt/code /mnt/secrets
@@ -15,7 +25,7 @@ git clone --depth=1 https://github.com/syl20bnr/spacemacs ~/.emacs.d
 
 # Configure devmachine service
 echo "=> Starting up docker service"
-cat > devmachine.service <<EOF
+cat > dev.service <<EOF
 [Unit]
 Description=DevMachine
 Requires=docker.service
@@ -25,14 +35,14 @@ After=docker.service
 TimeoutStartSec=0
 ExecStartPre=-/usr/bin/docker kill dev
 ExecStartPre=-/usr/bin/docker rm dev
-ExecStartPre=/usr/bin/docker pull stainlessio/devmachine:latest
-ExecStart=/usr/bin/docker run -h dev -e TZ=America/Los_Angeles --net=host --rm -v /mnt/code:/root/code -v /mnt/secrets:/root/secrets --cap-add=SYS_PTRACE --name dev stainlessio/devmachine:latest
+ExecStartPre=/usr/bin/docker pull stainlessio/devmachine:test
+ExecStart=/usr/bin/docker run -h dev -e TZ=America/Los_Angeles --net=host --rm -v /mnt/code:/root/code -v /mnt/secrets:/root/secrets --cap-add=SYS_PTRACE --name dev stainlessio/devmachine:test
 
 [Install]
 WantedBy=multi-user.target
 EOF
 
-sudo mv devmachine.service /etc/systemd/system/
+sudo mv dev.service /etc/systemd/system/
 sudo systemctl daemon-reload
 sudo systemctl enable dev
 sudo systemctl start dev

@@ -22,42 +22,30 @@ resource "digitalocean_record" "dev" {
 }
 
 resource "digitalocean_droplet" "dev" {
-  image = "docker-18-04"
+  image = "debian-9-x64"
   name = "dev-${random_id.devmachine.b64_url}"
   region = "sfo2"
   size = "s-1vcpu-1gb"
+  ssh_keys = [ "${data.digitalocean_ssh_key.work-laptop.fingerprint}" ]
+
+  connection {
+    type = "ssh"
+    private_key = "${file("~/.ssh/id_rsa")}"
+    user = "root"
+    timeout = "2m"
+  }
   provisioner "remote-exec" {
     script = "bootstrap.sh"
 
-    connection {
-      type = "ssh"
-      private_key = "${file("~/.ssh/id_rsa")}"
-      user = "root"
-      timeout = "2m"
-    }
   }
 
   provisioner "file" {
     source = "pull-secrets.sh"
     destination = "/mnt/secrets/pull-secrets.sh"
-
-    connection {
-      type = "ssh"
-      private_key = "${file("~/.ssh/id_rsa")}"
-      user = "root"
-      timeout = "2m"
-    }
   }
 
   provisioner "remote-exec" {
     inline = [ "chmod +x /mnt/secrets/pull-secrets.sh" ]
-
-    connection {
-      type = "ssh"
-      private_key = "${file("~/.ssh/id_rsa")}"
-      user = "root"
-      timeout = "2m"
-    }
   }
 }
 
