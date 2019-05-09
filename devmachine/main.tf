@@ -40,12 +40,12 @@ resource "digitalocean_droplet" "dev" {
   }
 
   provisioner "file" {
-    source = "pull-secrets.sh"
-    destination = "/mnt/secrets/pull-secrets.sh"
+    source = "secrets.sh"
+    destination = "/mnt/secrets/secrets.sh"
   }
 
   provisioner "remote-exec" {
-    inline = [ "chmod +x /mnt/secrets/pull-secrets.sh" ]
+    inline = [ "chmod +x /mnt/secrets/secrets.sh" ]
   }
 }
 
