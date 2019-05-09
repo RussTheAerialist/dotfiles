@@ -3,18 +3,18 @@
 set -eu 
 
 export DEBIAN_FRONTEND=noninteractive
-apt-get update && apt-get upgrade -y
-echo "========================================"
-apt-mark showhold
-echo "========================================"
-apt-get install -y git apt-transport-https curl software-properties-common
+echo "=> Installing prereq"
+apt-get install -y apt-transport-https software-properties-common curl
+echo "=> Configuring Docker Apt-Source"
 curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -
 add-apt-repository \
    "deb [arch=amd64] https://download.docker.com/linux/debian \
    $(lsb_release -cs) \
    stable"
-apt-get update
-apt-get install -y docker-ce docker-ce-cli containerd.io
+echo "=> Updating"
+apt-get update && apt-get upgrade -y
+echo "=> Installing Docker & Git"
+apt-get install -y git docker-ce docker-ce-cli containerd.io
 
 # TODO: Make secrets encrypted
 mkdir -p /mnt/code /mnt/secrets
