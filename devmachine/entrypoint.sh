@@ -13,6 +13,5 @@ fi
 cd ~/code/dotfiles && git remote set-url origin git@github.com:russtheaerialist/dotfiles.git
 
 # Link everything
-ln -s $(pwd)/spacemacs ~/.spacemacs
 
 /usr/bin/sshd -D

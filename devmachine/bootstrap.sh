@@ -19,10 +19,6 @@ apt-get install -y git docker-ce docker-ce-cli containerd.io
 # TODO: Make secrets encrypted
 mkdir -p /mnt/code /mnt/secrets
 
-# Spacemacs
-echo "=> Cloning emacs"
-git clone --depth=1 https://github.com/syl20bnr/spacemacs ~/.emacs.d
-
 # Configure devmachine service
 echo "=> Starting up docker service"
 cat > dev.service <<EOF
