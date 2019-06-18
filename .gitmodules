@@ -16,3 +16,6 @@
 [submodule "neo-pipe"]
 	path = local/share/nvim/site/pack/git-plugins/start/neo-pipe
 	url = https://github.com/coachshea/neo-pipe
+[submodule "fzf"]
+	path = local/share/nvim/site/pack/git-plugins/start/fzf
+	url = https://github.com/junegunn/fzf
