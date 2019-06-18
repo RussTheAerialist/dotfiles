@@ -19,7 +19,6 @@ RUN apt-get update -qq -y && apt-get upgrade -y && apt-get install -qq -y \
       build-essential \
       ca-certificates \
       curl \
-      emacs \
       # fasd \  # Not available on stable yet
       git \
       git-crypt \
@@ -40,6 +39,7 @@ RUN apt-get update -qq -y && apt-get upgrade -y && apt-get install -qq -y \
       tmate \
       tree \
       zsh \
+      neovim \
       --no-install-recommends \
       && rm -rf /var/lib/apt/lists/*
 
