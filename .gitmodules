@@ -7,3 +7,6 @@
 [submodule "languageclient"]
 	path = local/share/nvim/site/pack/git-plugins/start/languageclient
 	url = https://github.com/autozimu/LanguageClient-neovim
+[submodule "buildit"]
+	path = local/share/nvim/site/pack/git-plugins/start/buildit
+	url = https://github.com/wbthomason/buildit.nvim
