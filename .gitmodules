@@ -10,3 +10,6 @@
 [submodule "buildit"]
 	path = local/share/nvim/site/pack/git-plugins/start/buildit
 	url = https://github.com/wbthomason/buildit.nvim
+[submodule "editorconfig"]
+	path = local/share/nvim/site/pack/git-plugins/start/editorconfig-vim
+	url = https://github.com/editorconfig/editorconfig-vim
