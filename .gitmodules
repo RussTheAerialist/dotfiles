@@ -22,3 +22,6 @@
 [submodule "floobits-neovim"]
 	path = local/share/nvim/site/pack/git-plugins/start/floobits-neovim
 	url = https://github.com/Floobits/floobits-neovim
+[submodule "mirror.vim"]
+	path = local/share/nvim/site/pack/git-plugins/start/mirror.vim
+	url = https://github.com/zenbro/mirror.vim
