@@ -73,5 +73,6 @@ RUN dpkg -i /root/*.deb
 RUN chsh -s /usr/bin/zsh
 WORKDIR /root
 COPY zshrc /root/.zshrc
+COPY gitconfig /root/.gitconfig
 COPY entrypoint.sh /bin/entrypoint.sh
 CMD [ "/bin/entrypoint.sh" ]
