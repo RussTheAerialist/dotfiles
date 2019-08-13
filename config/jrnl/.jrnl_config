@@ -1,6 +1,6 @@
 {
 	"journals": {
-		"default": "~/journal.txt",
-		"personal": "~/personal_journal.txt"
+		"default": "~/journal/journal.txt",
+		"personal": "~/journal/personal.txt"
 	}
 }
