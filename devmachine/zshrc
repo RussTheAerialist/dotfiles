@@ -111,3 +111,9 @@ alias vi=`where nvim`
 if [ -f /opt/local/share/fzf/shell/key-bindings.zsh ]; then
   source  /opt/local/share/fzf/shell/key-bindings.zsh
 fi
+
+if [ -f `which exa` ]; then
+  alias ls="`where exa`"
+  alias lg="`where exa` --git -albgH -s modified"
+  alias lt="`where exa` -T"
+fi
