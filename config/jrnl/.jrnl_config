@@ -1,15 +1,15 @@
 {
-  "journals": {
-    "default": "~/journal/journal.txt",
-    "personal": "~/journal/personal.txt",
-    "learning": "~/journal/learning.txt",
-  },
-  "encrypt": false,
-  "linewrap": 79,
   "default_hour": 9,
-  "default_minute": 0,
-  "timeformat": "%Y-%m-%d %H:%M",
-  "highlight": true,
+  "encrypt": false,
+  "editor": "nvim",
   "tagsymbols": "@",
-  "editor": "nvim"
+  "linewrap": 79,
+  "default_minute": 0,
+  "highlight": true,
+  "timeformat": "%Y-%m-%d %H:%M",
+  "journals": {
+    "learning": "~/journal/learning.txt",
+    "personal": "~/journal/personal.txt",
+    "default": "~/journal/journal.txt"
+  }
 }
