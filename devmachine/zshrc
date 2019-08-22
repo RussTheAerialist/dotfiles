@@ -112,8 +112,9 @@ if [ -f /opt/local/share/fzf/shell/key-bindings.zsh ]; then
   source  /opt/local/share/fzf/shell/key-bindings.zsh
 fi
 
-if [ -f `which exa` ]; then
-  alias ls="`where exa`"
-  alias lg="`where exa` --git -albgH -s modified"
-  alias lt="`where exa` -T"
+EXA_PATH=`which exa`
+if [ -f "$EXA_PATH" ]; then
+  alias ls="$EXA_PATH"
+  alias lg="$EXA_PATH --git -albgH -s modified"
+  alias lt="$EXA_PATH -T"
 fi
