@@ -118,3 +118,10 @@ if [ -f "$EXA_PATH" ]; then
   alias lg="$EXA_PATH --git -albgH -s modified"
   alias lt="$EXA_PATH -T"
 fi
+mot() {
+  if [ "$1" != "" ]; then
+    mosh "$1" -- tmux new -Ad -s mosh-session
+  else
+    mosh "rhay@russellhay.com" -- tmux new -Ad -s mosh-session
+  fi
+}
