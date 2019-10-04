@@ -3,3 +3,4 @@
 main.shada
 local/share/nvim/swap/
 nvim/.netrwhist
+local/share/nvim/rplugin.vim
