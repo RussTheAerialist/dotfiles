@@ -29,6 +29,8 @@ if dein#load_state('/home/rhay/.cache/dein')
   call dein#add('zenbro/mirror.vim')
   call dein#add('coachshea/neo-pipe')
   call dein#add('tpope/vim-projectionist')
+  call dein#add('vim-airline/vim-airline')
+  call dein#add('vim-airline/vim-airline-themes')
 
   " Required:
   call dein#end()
