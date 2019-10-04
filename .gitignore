@@ -1,3 +1,5 @@
 .terraform
 *.tfstate*
 main.shada
+local/share/nvim/swap/
+nvim/.netrwhist

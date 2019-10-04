@@ -1,5 +1,4 @@
 {
-  "default_hour": 9,
   "encrypt": false,
   "editor": "nvim",
   "tagsymbols": "@",
