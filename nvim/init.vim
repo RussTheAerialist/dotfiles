@@ -27,6 +27,8 @@ if dein#load_state('/home/rhay/.cache/dein')
   call dein#add('editorconfig/editorconfig-vim')
   call dein#add('junegunn/fzf')
   call dein#add('zenbro/mirror.vim')
+  call dein#add('coachshea/neo-pipe')
+  call dein#add('tpope/vim-projectionist')
 
   " Required:
   call dein#end()
