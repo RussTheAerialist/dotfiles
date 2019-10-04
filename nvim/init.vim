@@ -22,8 +22,11 @@ if dein#load_state('/home/rhay/.cache/dein')
   call dein#add('mhartington/nvim-typescript', {'build': './install.sh'})
   call dein#add('Shougo/deoplete.nvim')
   call dein#add('Shougo/denite.nvim')
+
+  " Environment and Functionality Plugins
   call dein#add('editorconfig/editorconfig-vim')
   call dein#add('junegunn/fzf')
+  call dein#add('zenbro/mirror.vim')
 
   " Required:
   call dein#end()
