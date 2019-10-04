@@ -23,6 +23,7 @@ if dein#load_state('/home/rhay/.cache/dein')
   call dein#add('Shougo/deoplete.nvim')
   call dein#add('Shougo/denite.nvim')
   call dein#add('editorconfig/editorconfig-vim')
+  call dein#add('junegunn/fzf')
 
   " Required:
   call dein#end()
@@ -46,12 +47,12 @@ let mapleader=" "
 silent !helptags ALL
 
 set hidden
-let g:editorconfig_verbose = 1
 set number
 set shiftwidth=2
 set softtabstop=2
 set tabstop=2
 set expandtab!
+let g:editorconfig_verbose = 1
 let g:deoplete#enable_at_startup = 1
 
 nnoremap <silent> <C-p> :FZF<CR>
