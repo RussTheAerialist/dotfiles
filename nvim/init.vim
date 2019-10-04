@@ -4,15 +4,15 @@ if &compatible
 endif
 
 " Required:
-set runtimepath+=/home/rhay/.cache/dein/repos/github.com/Shougo/dein.vim
+set runtimepath+=$HOME/.cache/dein/repos/github.com/Shougo/dein.vim
 
 " Required:
-if dein#load_state('/home/rhay/.cache/dein')
-  call dein#begin('/home/rhay/.cache/dein')
+if dein#load_state(expand('~/.cache/dein'))
+  call dein#begin(expand('~/.cache/dein'))
 
   " Let dein manage dein
   " Required:
-  call dein#add('/home/rhay/.cache/dein/repos/github.com/Shougo/dein.vim')
+  call dein#add(expand('~/.cache/dein/repos/github.com/Shougo/dein.vim'))
 
   call dein#add('Shougo/neosnippet.vim')
   call dein#add('Shougo/neosnippet-snippets')
