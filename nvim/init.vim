@@ -14,9 +14,14 @@ if dein#load_state('/home/rhay/.cache/dein')
   " Required:
   call dein#add('/home/rhay/.cache/dein/repos/github.com/Shougo/dein.vim')
 
-  " Add or remove your plugins here like this:
   call dein#add('Shougo/neosnippet.vim')
   call dein#add('Shougo/neosnippet-snippets')
+
+  " Typescript Support
+  call dein#add('HerringtonDarkholme/yats.vim')
+  call dein#add('mhartington/nvim-typescript', {'build': './install.sh'})
+  call dein#add('Shougo/deoplete.nvim')
+  call dein#add('Shougo/denite.nvim')
 
   " Required:
   call dein#end()
@@ -46,5 +51,6 @@ set shiftwidth=2
 set softtabstop=2
 set tabstop=2
 set expandtab!
+let g:deoplete#enable_at_startup = 1
 
 nnoremap <silent> <C-p> :FZF<CR>
