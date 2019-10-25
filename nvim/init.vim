@@ -23,6 +23,16 @@ if dein#load_state(expand('~/.cache/dein'))
   call dein#add('Shougo/deoplete.nvim')
   call dein#add('Shougo/denite.nvim')
 
+  " Vue Support
+  call dein#add('posva/vim-vue')
+  call dein#add('digitaltoad/vim-pug')
+
+  " Emmet Support
+  call dein#add('mattn/emmet-vim')
+
+  " terraform support
+  call dein#add('juliosueiras/vim-terraform-completion')
+
   " Environment and Functionality Plugins
   call dein#add('editorconfig/editorconfig-vim')
   call dein#add('junegunn/fzf')
@@ -60,6 +70,12 @@ set softtabstop=2
 set tabstop=2
 set expandtab!
 let g:editorconfig_verbose = 1
+
+" Terraform Deoplete Config
+let g:geoplete#omni_patterns = { }
+let g:geoplete#omni_patterns.terraform = '[^ *\t"{=$]\w*'
+
 let g:deoplete#enable_at_startup = 1
+call deoplete#initialize()
 
 nnoremap <silent> <C-p> :FZF<CR>
