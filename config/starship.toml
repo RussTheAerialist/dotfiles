@@ -1,0 +1,22 @@
+prompt_order = [
+"directory",
+"git_branch",
+"git_state",
+"git_status",
+"cmd_duration",
+"jobs",
+"character"
+]
+
+[character]
+symbol = "➜"
+use_symbol_for_status = true
+
+[aws]
+disabled = true
+
+[line_break]
+disabled = true
+
+[hostname]
+disabled = true
